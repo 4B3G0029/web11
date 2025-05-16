@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>成績判定</title>
+  <style>
+    body {
+      background-color: #a32626;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    input, button {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>成績判定</h1>
+  <input type="number" id="scoreInput" placeholder="輸入分數 (0–100)">
+  <button id="submitBtn">送出</button>
+  <p id="output"></p>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      const score = parseInt(document.getElementById('scoreInput').value, 10);
+      let grade = '錯誤';
+
+      if (!isNaN(score) && score >= 0 && score <= 100) {
+        if (score >= 80) {
+          grade = 'A';
+        } else if (score >= 70) {
+          grade = 'B';
+        } else if (score >= 60) {
+          grade = 'C';
+        } else {
+          grade = 'D';
+        }
+      }
+
+      document.getElementById('output').textContent = grade;
+    });
+  </script>
+</body>
+</html>
